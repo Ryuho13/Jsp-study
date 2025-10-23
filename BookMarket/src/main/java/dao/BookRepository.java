@@ -7,7 +7,16 @@ import dto.Book;
 
 // 도서 데이터 접근 클래스
 public class BookRepository {
-	private List<Book> listOfBook = new ArrayList<Book>();
+	private List<Book> listOfBooks = new ArrayList<Book>();
+	
+	// 기본 생성자에 대한 객체 변수 instance를 작성
+	private static BookRepository instance = new BookRepository();
+	
+	// 객체 변수 instance에 대한 Getter() 메소드 작성
+	public static BookRepository getInstance() {
+		return instance;
+	}
+	// 싱글톤과 유사하게 객체 하나만 만들어서 계속 공유해서 쓰겠다는 의미!
 	
 	public BookRepository() {
 		Book book1= new Book("ISBN1234", "C# 프로그래밍", 27000);
@@ -37,28 +46,34 @@ public class BookRepository {
 		book3.setReleaseDate("2023/01/01");
 		book3.setFilename("ISBN1236.jpg");
 		
-		listOfBook.add(book1);
-		listOfBook.add(book2);
-		listOfBook.add(book3);
+		listOfBooks.add(book1);
+		listOfBooks.add(book2);
+		listOfBooks.add(book3);
 	}
 	
 	// 모든 도서 목록을 가져오는 메소드
 	public List<Book> getAllBooks() {
-		return listOfBook;
+		return listOfBooks;
 	}
 	
-	// 도서 상세 정보를 가져오는 메소드 
+	// 도서 상세 정보를 가져오는 메소드
 	public Book getBookById(String bookId) {
-	    if (bookId == null) return null;
-
-	    for (Book book : listOfBook) {
-	        if (book.getBookId().equalsIgnoreCase(bookId)) {
-	            return book;
-	        }
-	    }
-
-	    return null;
+		if (bookId == null) return null;
+		
+		for (Book book : listOfBooks) {
+			if (book != null && bookId.equals(book.getBookId())) {
+				return book; // 찾으면 바로 반환
+			}
+		}
+		return null;
 	}
+	
+	// 신규 도서 데이터를 저장하는 메소드
+	public void addBook(Book book) {
+		listOfBooks.add(book);
+	}
+	
+	
 	
 	
 	

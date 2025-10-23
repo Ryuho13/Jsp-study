@@ -3,7 +3,7 @@ package dto;
 import java.io.Serializable;
 
 // 도서 클래스(도서 데이터를 표현하는 클래스로 자바빈으로 작성)
-public class Book implements Serializable{
+public class Book implements Serializable {
 
 	/**
 	 * 
@@ -21,17 +21,34 @@ public class Book implements Serializable{
 	private String releaseDate;  // 출판일(월/년)
 	private String condition; 	 // 신제품 or 구제품 or 리퍼브제품
 	private String filename;     // 이미지 파일명
+	private int quantity;  		 // 장바구니에 담은 개수
+	
+	
 	
 	public Book() {
 	}
 
 	public Book(String bookId, String name, int unitPrice) {
-		super();
 		this.bookId = bookId;
 		this.name = name;
 		this.unitPrice = unitPrice;
 	}
-
+	// 복사 생성자 추가
+	public Book(Book other) {
+		this.bookId = other.bookId;
+		this.name = other.name;
+		this.unitPrice = other.unitPrice;
+		this.author = other.author;
+		this.description = other.description;
+		this.publisher = other.publisher;
+		this.category = other.category;
+		this.unitsInStock = other.unitsInStock;
+		this.releaseDate = other.releaseDate;
+		this.condition = other.condition;
+		this.filename = other.filename;
+		this.quantity = other.quantity;
+	}
+	
 	public String getBookId() {
 		return bookId;
 	}
@@ -119,11 +136,23 @@ public class Book implements Serializable{
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	
-	
-	
-	
-	
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [bookId=" + bookId + ", name=" + name + ", unitPrice=" + unitPrice + ", author=" + author
+				+ ", description=" + description + ", publisher=" + publisher + ", category=" + category
+				+ ", unitsInStock=" + unitsInStock + ", releaseDate=" + releaseDate + ", condition=" + condition
+				+ ", filename=" + filename + ", quantity=" + quantity + "]";
+	}
+
 	
 	
 }
