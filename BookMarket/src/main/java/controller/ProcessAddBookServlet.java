@@ -100,6 +100,7 @@ public class ProcessAddBookServlet extends HttpServlet {
         
         String sql = "INSERT INTO book (b_id, b_name, b_unitPrice, b_author, b_description, b_publisher, b_category, b_unitsInStock, b_releaseDate, b_condition, b_fileName)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         
+        
         // 공통 메소드로 커넥션 획득
         conn = DBUtil.getConnection();
         
