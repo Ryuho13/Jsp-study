@@ -19,7 +19,7 @@
 		ResultSet rs = null;
 	
 		try {
-			String url = "jdbc:mysql://127.0.0.1:3306/booknarketdb";
+			String url = "jdbc:mysql://127.0.0.1:3306/bookmarketdb";
 			String user = "root";
 			String password = "test1234";
 			
